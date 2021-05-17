@@ -27,10 +27,9 @@ if(allPosts){
 
 // RENDERIZA OS POSTS NA TELA
 const render = ()=> {
- if(ul === true ){
-  ul.innerHTML="";
-  return
- }
+ if(ul === true )ul.innerHTML="";
+  
+
   allPosts.map(post=>{
     let item = document.createElement('ARTICLE');
    
@@ -50,7 +49,8 @@ const render = ()=> {
    </div>
  `
 
- ul.appendChild(item)
+if(ul === true)ul.appendChild(item);
+
   })
  }
  render();
@@ -99,9 +99,9 @@ const save = ()=>{
 
 // BOTÃO DE SALVAR O POST
 
-if(btnSend === true){
-  btnSend.addEventListener('click',save);
 
-}
+  
+
+
 
 
