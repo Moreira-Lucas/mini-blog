@@ -1,23 +1,59 @@
-import Post from './post.js';
 const form = document.querySelector('form');
 const author = document.querySelector('#author');
 const title = document.querySelector('#title');
 const category = document.querySelector('#category');
 const postBody = document.querySelector('#post');
-const btnSend = document.querySelector('.btn-send');
+const btnSend = document.querySelector('#btn-send');
 const btnBack = document.querySelector('#btn-back');
 const ul = document.querySelector('.ul');
 
 
-const allPosts = []; //JSON.parse(localStorage.getItem('key-allPosts'));
 
-/*if(allPosts){
+
+
+
+
+//ARRAY COM TODOS OS POST INICIA COM CONTEÚDO GUARDADO DO LOCALSTORAGE OU VAZIO
+let allPosts = JSON.parse(localStorage.getItem('key-allPosts'));
+if(allPosts){
   console.log(allPosts);
+  
 }else{
-  console.log('')
+  console.log('vazio')
+  allPosts = [];
 }
-*/
 
+
+
+// RENDERIZA OS POSTS NA TELA
+const render = ()=> {
+ if(ul === true ){
+  ul.innerHTML="";
+  return
+ }
+  allPosts.map(post=>{
+    let item = document.createElement('ARTICLE');
+   
+    item.innerHTML += `
+     
+   
+   <div class="card" style="width: 18rem;">
+     <img src="https://abstartups.com.br/wp-content/uploads/2018/10/Qual-a-tecnologia.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title">${post.title}</h5>
+       <p class="card-text">${post.postBody}</p>
+       <span>${post.author}</span>
+       <a href="#" class="btn btn-primary">Ler artigo</a>
+       <hr/> 
+       <span>${post.dateFormated}</span>
+     </div>
+   </div>
+ `
+
+ ul.appendChild(item)
+  })
+ }
+ render();
 
 //ul.innerHTML = allPosts.author;
 
@@ -30,81 +66,42 @@ const allPosts = []; //JSON.parse(localStorage.getItem('key-allPosts'));
 }
 */
 
-
-
-
-
-
-
 const dateCurrent = new Date();
 
-const dateFormated = `${dateCurrent.getDate()}/${dateCurrent.getMonth()}/${dateCurrent.getUTCFullYear()}`;
+  const dateFormated = `${dateCurrent.getDate()}/${dateCurrent.getMonth()}/${dateCurrent.getUTCFullYear()}`;  
 
 
-const save = (e)=>{
-  e.preventDefault();
- 
- 
-  const posted = new Post(
-    author.value,
-    title.value,
-    category.value,
-    postBody.value,
-    dateFormated)
+
   
-      
+//SALVAR NO LOCALSTORAGE
+const save = ()=>{
+  let posted = {
+    author: author.value,
+    title: title.value,
+    category:category.value,
+    postBody: postBody.value,
+    dateFormated:dateFormated
+  }
 
-      allPosts.push(posted);
-      
+
+      allPosts.unshift(posted);
+      console.log(allPosts);
   
     localStorage.setItem('key-allPosts',JSON.stringify(allPosts));
     
+  render();
+   /* 
+    
+    `*/
+ 
+
+  }
+
+// BOTÃO DE SALVAR O POST
+
+if(btnSend === true){
+  btnSend.addEventListener('click',save);
+
 }
 
-btnSend.addEventListener('submit',save);
 
-
-
-
-
-
-/*
-btnSend.addEventListener('submit', (e)=>{
-  e.preventDefault();
- 
- 
-  const posted = new Post(
-    author.value,
-    title.value,
-    category.value,
-    postBody.value,
-    dateFormated)
-  
-      
-
-      allPosts.push(posted);
-      
-  
-    localStorage.setItem('key-allPosts',JSON.stringify(allPosts));
-    
-  
-   /* ul.innerHTML = `
-    
-    <article>
-    <div class="card" style="width: 18rem;">
-      <img src="https://abstartups.com.br/wp-content/uploads/2018/10/Qual-a-tecnologia.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${Posted.title}</h5>
-        <p class="card-text">${Posted.postBody}</p>
-        <span>${Posted.author}</span>
-        <a href="#" class="btn btn-primary">Ler artigo</a>
-        <hr/> 
-        <span>${Posted.datePost}</span>
-      </div>
-    </div>
-  </article>
-    
-    `
-})
-
-*/

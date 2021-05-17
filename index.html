@@ -5,46 +5,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css">
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   
   
-  <title>Document</title>
+  <title>Fake-Blog</title>
 </head>
 <body>
-  <div class="container pt-5">
-    
-      <div class="container form-group mb-3">
-        <label class="form-label">Autor</label>
-        <input id="author" class="form-control" type="text">
-        <label for="" class="form-label">Título</label>
-        <input id="title" class="form-control" type="text">
-        <label  for="" class="form-label">Categoria</label>
-        <select id="category" class="form-select" name="" id="">
-          <option selected value="0">Selecione uma categoria</option>
-          <option value="tec">Tecnologia</option>
-          <option value="car">Carreira</option>
-          <option value="eco">Economia</option>
-          <option value="div">Diversos</option>
-        </select>
-        <label for="" class="form-label mt-5">Escreva o seu post abaixo:</label>
-        <textarea class="form-control mb-3" name="post" id="post" cols="30" rows="10"></textarea>
-        <button type="button" class="btn btn-primary btn-send">Postar</button>
-        <button  type="button" id="btn-back" class="btn btn-danger">Voltar</button>
-      </div>
+
+<nav>
+  <li><a href="./index.html">Home</a></li>
+  <li><a href="./create-post.html">criar um post</a></li>
+</nav>
+
+    <section class="container">
+      <h2>Últimas notícias...</h2>
+      <ul class="ul ">
      
-    
+      </ul>
+    </section>
   </div>
 
-  <section class="container">
-    <h2>Últimas notícias...</h2>
-    <ul class="ul">
-   
-    </ul>
-  </section>
+  
+  <script src="app.js"></script>
+  
 </body>
-<script src="app.js" type="module"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
 
 </html>
